@@ -2,6 +2,8 @@ from modules import Json
 from asyncio import run
 from random import randint
 
+ignore_place = ["釣魚臺"]
+
 async def capture():
 
     City = {}
@@ -10,9 +12,11 @@ async def capture():
     idx = 0
     for i in range(len(Data)):
 
-        if Data[i]["CityName"] == "釣魚臺":
+        for ignore in ignore_place:
             
-            continue
+            if ignore == Data[i]["CityName"]:
+            
+                continue
         
         City[idx] = Data[i]["CityName"]
         
